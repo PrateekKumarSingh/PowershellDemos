@@ -10,8 +10,12 @@ Pipelining is an important technique when the operation you are performing, such
 * Pipelining can substantially improve actual performance. Commands in a pipeline are run concurrently-even if you have only a single processor, because when one process blocks, for example, while reading a large chunk of your file, then another process in the pipeline can do a unit of work in the meantime.
 Pipelining can have a significant effect on your end-user experience, enhancing the perceived performance dramatically. If your end-user executes a sequence of commands that takes 60 seconds, then without pipelining the user sees nothing until the end of that 60 seconds, while with pipelining output might start appearing in just a couple seconds.
 
+# How PipeLine Works
+* When you "pipe" objects, that is send the objects in the output of one command to another command, Windows PowerShell tries to associate the piped objects with one of the parameters of the receiving cmdlet.
 
 one object at a time
+parameter binding using trace-object
+Begin process end
 
 ## Pipeline variable\object\data
 * $_
@@ -19,4 +23,11 @@ one object at a time
 * $input
 
 1..5|%{$_}
+
+
+# Learning resources
+
+* [Ins and Outs of the PowerShell Pipeline](https://www.simple-talk.com/sysadmin/powershell/ins-and-outs-of-the-powershell-pipeline/) [Article]
+* [A Study in PowerShell Pipelines, Functions, and Parameters](https://www.simple-talk.com/dotnet/.net-tools/down-the-rabbit-hole--a-study-in-powershell-pipelines,-functions,-and-parameters/) [Article]
+
 
