@@ -12,10 +12,18 @@ Pipelining can have a significant effect on your end-user experience, enhancing 
 
 # How PipeLine Works
 * When you "pipe" objects, that is send the objects in the output of one command to another command, Windows PowerShell tries to associate the piped objects with one of the parameters of the receiving cmdlet.
+![Powershell Pipeline Pictorial View](.\Pipelines\Images\PictorialView.jpg)
+1. one object at a time (Proof using the Get-Member cmdlet)
+2. Accept value from Pipeline (Use Get-member/Get-Help to understand)
 
-one object at a time
-parameter binding using trace-object
-Begin process end
+    - **By Value**
+        Parameters that accept input "by value" can accept piped objects that have the same .NET type as their parameter value or objects that can be converted to that type.
+    - **By Name**
+        Parameters that accept input "by property name" can accept piped objects only when a property of the object has the same name as the parameter.
+
+    - Examples
+3. parameter binding using trace-object
+4. Begin process end
 
 ## Pipeline variable\object\data
 * $_
