@@ -12,7 +12,7 @@ Pipelining can have a significant effect on your end-user experience, enhancing 
 
 # How PipeLine Works
 * When you "pipe" objects, that is send the objects in the output of one command to another command, Windows PowerShell tries to associate the piped objects with one of the parameters of the receiving cmdlet.
-![Powershell Pipeline Pictorial View](.\Pipelines\Images\PictorialView.jpg)
+[Powershell Pipeline Pictorial View](./Images/PictorialView.jpg)
 1. one object at a time (Proof using the Get-Member cmdlet)
 2. Accept value from Pipeline (Use Get-member/Get-Help to understand)
 
