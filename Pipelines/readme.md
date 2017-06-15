@@ -24,7 +24,7 @@
 2.  **Concurrent Execution :** Pipelining can substantially improve actual performance. 
     Commands in a pipeline are run concurrently (**not parallel processing**) , for example when one process is blocked while reading a large chunk of your file, then another process in the pipeline can do a unit of work in the meantime.
 
-3.  **Less Code :** Considering the lesser time taken by enabling us to [write less code](./Example1_Basic.ps1) using the pipelines. 
+3.  **Less Code :** Considering the lesser time taken by enabling us to [write less code](./Example1_basic.ps1) using the pipelines. 
     Because, You don't have to declare variables, write loops etc.
 
 4.  **Quicker Object processing :** Objects are processed **as soon as they are sent to the pipeline**, 
