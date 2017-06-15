@@ -9,7 +9,7 @@
 
     ![Picture](./Images/PictorialView.jpg?raw=true)
 
-    ![Example](/pipelines/Images/PipelineExample.png?raw=true)
+    ![Example](./Images/PipelineExample.png?raw=true)
 
 * Important technique when the operation you are performing, such as reading files of indeterminate length, 
     or processing collections of large objects to **conserve memory consumption** by **breaking a large task into its atomic components.**
