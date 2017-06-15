@@ -103,12 +103,12 @@
     
     Difference between Foreach statement and Foreach-Object
 
-        Foreach statement                                           | Foreach-Object (% - Alias)
-        ----------------------------------------------------------- |---------------------------------------------------------------------------
-         More code usually                                          | Less code
-         Faster                                                     | Comparatively slower
-         Loads all items upfront in Memory and then process them    | keeps processing the objects as they come through the pipe
-         High Memory consumtion                                     | Less Memory utilization and Better end user XP
+Foreach statement                                          | Foreach-Object (% - Alias)
+-----------------------------------------------------------|---------------------------------------------------------------------------
+More code usually                                          | Less code
+Faster                                                     | Comparatively slower
+Loads all items upfront in Memory and then process them    | keeps processing the objects as they come through the pipe
+High Memory consumtion                                     | Less Memory utilization and Better end user XP
 
 * Functions that Accept pipeline inputs    
     
