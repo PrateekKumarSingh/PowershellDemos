@@ -7,7 +7,7 @@
 
 * Pipeline binds the **results\outputs of one command entring from one side of the pipeline to another command on the other side** of the pipeline
 
-    ![Picture](./pipelines/Images/PictorialView.jpg?raw=true)
+    ![Picture](./Images/PictorialView.jpg?raw=true)
 
     ![Example](/pipelines/Images/PipelineExample.png?raw=true)
 
