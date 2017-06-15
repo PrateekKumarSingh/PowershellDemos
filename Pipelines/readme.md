@@ -35,7 +35,11 @@ If your end-user executes a sequence of commands that takes 60 seconds, then wit
 
 # How PipeLine Works
 * When you "pipe" objects, that is send the objects in the output of one command to another command, Windows PowerShell tries to associate the piped objects with one of the parameters of the receiving cmdlet.
+<<<<<<< HEAD
 [](/Images/PictorialView.jpg)
+=======
+[/Images/PictorialView.jpg]
+>>>>>>> dd94a3247f5eacc8da65cb3fd606470cf98af150
 1. one object at a time (Proof using the Get-Member cmdlet)
 2. Accept value from Pipeline (Use Get-member/Get-Help to understand)
 
