@@ -37,11 +37,10 @@
 
 # Foreach vs Foreach-Object
 
-
 Foreach statement                   | Foreach-Object 
 ---------                           |----------------
- Speed                              | [Comparatively slower](Demo.ps1)
- [High Memory consumtion](Demo.ps1) | Less Memory utilization
+ Speed                              | [Comparatively slower](./Example_Speed.ps1)
+ [High Memory consumtion](.ps1)     | Less Memory utilization
 
 
 # Where you can use PipeLines?
@@ -56,7 +55,6 @@ Foreach statement                   | Foreach-Object
 # How PipeLine Works
 * When you "pipe" objects, that is send the objects in the output of one command to another command, Windows PowerShell tries to associate the piped objects with one of the parameters of the receiving cmdlet.
 
-
 1. one object at a time (Proof using the Get-Member cmdlet)
 2. Accept value from Pipeline (Use Get-member/Get-Help to understand)
 
@@ -69,7 +67,7 @@ Foreach statement                   | Foreach-Object
 3. parameter binding using trace-Command
 4. Begin process end
 
-## Pipeline variable\object\data
+## Handling Pipeline variable\object\data
 * $_
 * $PSItem
 * $input
