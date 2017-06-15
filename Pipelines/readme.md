@@ -7,8 +7,8 @@
 
 * Pipeline binds the **results\outputs of one command entring from one side of the pipeline to another command on the other side** of the pipeline
 
-    [](/Pipelines/Images/PictorialView.jpg)
-    [](/Pipelines/Images/PipelineExample.png)
+    [Picture](/Pipelines/Images/PictorialView.jpg)
+    [Example](/Pipelines/Images/PipelineExample.png)
 
 * Important technique when the operation you are performing, such as reading files of indeterminate length, 
     or processing collections of large objects to **conserve memory consumption** by **breaking a large task into its atomic components.**
