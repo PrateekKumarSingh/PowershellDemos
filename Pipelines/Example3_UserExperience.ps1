@@ -13,4 +13,4 @@ $result
 
 # ($content).Where({$_ -like "*pipe*"})
 
-Get-Content C:\Demo\bigFile.txt | Where-Object {$_ -like "*pipe*"} -OutVariable result2
+Get-Content .\bigFile.txt | Where-Object {$_ -like "*pipe*"} -OutVariable result2

@@ -64,8 +64,13 @@
     Following are 2 ways through which cmdlet accept values from pipeline
     - **By Value** -
         Parameters that accept input [by value](./Example4_Valuefrompipeline.ps1) can accept piped objects that have the same .NET type as their parameter value or objects that can be converted to that type.
-    - **By Name**
+    - **By Property Name**
         Parameters that accept input [by property name](./Example5_ValuebyPropertyName.ps1) can accept piped objects only when a property of the object has the same name as the parameter.
+
+        [By Property Name](./Images/New-aduser.png) parameter binding is the reason we can pipe user details from a CSV file **with same column names as properties** of New-ADUser cmdlet and it will create all users without implicitly defining the Parameters of New-AdUser cmdlet
+
+        `Import-csv UserDetails.csv | New-Aduser`
+
 
     Some example to find the parameter help information
     `Get-Help Stop-Service -full`
@@ -74,7 +79,7 @@
 
 *   To understand better parameter binding works, use the following commands
 
-    `Trace-Command -Name ParameterBinding -PSHost -Expression { Get-ChildItem | Select-Object -f 1 }`
+    `Trace-Command -Name Parameter* -PSHost -Expression { Get-ChildItem | Select-Object -f 1 }`
 
 *   **What are Pipeline variables ?**
 
@@ -97,9 +102,10 @@
     1. `Ipconfig | Where{$_ -like "*.*.*.*"}` - You can pipe native win command to a cmdlet
     2. `Ipconfig | findstr` - You can pipe native win command to a native windows command
     3. `Get-WMIObject win32_computersystem |findstr "Model"` - You can pipe cmdlet to a win native command
-* Foreach-Object cmdlet lets you access pipeline blocks/variables and use them effieciently
 
-    `1..4 | ForEach-Object -Begin {$Sum} -Process {$Sum += $_} -End {$Sum}`
+* To access pipeline variables and use them effieciently use Foreach-Object cmdlet
+    `   1..4 | ForEach-Object {$_*2}    `
+    `   1..4 | ForEach-Object -Begin {$Sum} -Process {$Sum += $_} -End {$Sum}   `
     
     Difference between Foreach statement and Foreach-Object
 
@@ -110,8 +116,8 @@ Faster                                                     | Comparatively slowe
 Loads all items upfront in Memory and then process them    | keeps processing the objects as they come through the pipe
 High Memory consumtion                                     | Less Memory utilization and Better end user XP
 
-* Functions that Accept pipeline inputs    
-    
+* Functions that Accept pipeline inputs 
+   
 # Learning resources
 
 * [Ins and Outs of the PowerShell Pipeline](https://www.simple-talk.com/sysadmin/powershell/ins-and-outs-of-the-powershell-pipeline/) [Article]
