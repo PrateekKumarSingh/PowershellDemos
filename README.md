@@ -1,6 +1,7 @@
 # PowershellDemos
 Demo Files and Scripts on PowerShell and related topics
 
+<<<<<<< HEAD
 Following is the structure of Folder,Files, code Snippets included in all demos in this repo -
 
 ```
@@ -31,3 +32,5 @@ Following is the structure of Folder,Files, code Snippets included in all demos 
             SampleScript1.ps1
             SampleScript2.ps1
 ```
+=======
+>>>>>>> 585ee3b0fe34c348f5ef44b58aff6770cfa4474d
