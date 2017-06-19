@@ -1,7 +1,8 @@
 # PowershellDemos
+
 Demo Files and Scripts on PowerShell and related topics
 
-Following is the structure of Folder,Files, code Snippets included in all demos in this repo -
+Following is the structure of Folder,Files, code Snippets included in this repo -
 
 ```
 |   README.md
