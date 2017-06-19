@@ -50,7 +50,8 @@
     Like, 
             ` Get-Service b* | Stop-Service `
 
-    Proof that only one object passes through :            
+    Proof that only one object passes through, check the Typename in each of the below commands,
+    One is an object (coming from pipeline), whereas other one is an array of objects.            
     ```
         Get-service b* | get-member
 
@@ -105,7 +106,7 @@
 
 * To access pipeline variables and use them effieciently use Foreach-Object cmdlet
     `   1..4 | ForEach-Object {$_*2}    `
-    
+
     `   1..4 | ForEach-Object -Begin {$Sum} -Process {$Sum += $_} -End {$Sum}   `
     
     Difference between Foreach statement and Foreach-Object
