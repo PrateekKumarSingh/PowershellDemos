@@ -39,7 +39,7 @@
 # DRAWBACKS (Because it's designed that way)
 
 *   Not very fast **in most cases**, there is a [performance penalty](./Example2_Speed.ps1) that comes with Pipelines
-*   Its a trade-off between High Memmory Consumption and Speed. 
+*   Its a trade-off between Low Memmory Consumption and Speed. 
     Choice is yours there is nothing wrong or right, if you understand how and when to use Pipelines.
 
 
@@ -105,6 +105,7 @@
 
 * To access pipeline variables and use them effieciently use Foreach-Object cmdlet
     `   1..4 | ForEach-Object {$_*2}    `
+    
     `   1..4 | ForEach-Object -Begin {$Sum} -Process {$Sum += $_} -End {$Sum}   `
     
     Difference between Foreach statement and Foreach-Object
