@@ -12,11 +12,19 @@ Now you can write and debug PowerShell scripts using the excellent IDE-like inte
      **`Install-Script Install-VSCode -Scope CurrentUser; Install-VSCode.ps1`**
 
 ## Why to use VSCode? When I have ISE!
-*   Open source! runs on Linux, Mac and Windows. Same Scripting experience on all OS in a Hybrid environment
-*   Powershell extension for Visual studio code has been downloaded by 800,000+ times, that means something!
-*   Version 1.0 has been released in May and its already very popular
+*   No active development on ISE by Microsoft. Instead Microsoft is heavily investing in VSCode.
+*   Free of cost being an advanced IDE.
+*   Open source! runs on Linux, Mac and Windows. Consistent Scripting experience on all OS in a Hybrid environment
+*   Powershell extension for Visual studio code has been downloaded more than 5.9M times, that means something!
 *   Powershell is not only for small tasks and quick automation fixes,
-    and IDE makes it easy to develop complex automation projects for On Prem and Cloud technologies
+    and IDE makes it easy to develop complex automation projects for On Prem and Cloud technologies, which becomes hard with ISE.
+
+## Look, Feel, visual components.
+*   Editor Panes\Groups
+*   Activity Bar
+*   Panel
+*   Status Bar
+*   Side Bar
 
 ### A. Features
 1. Syntax highlighting
@@ -33,12 +41,13 @@ Now you can write and debug PowerShell scripts using the excellent IDE-like inte
 12. Launch Online help  **[Ctrl+F1]**
 13. Command Palette     **[Ctrl+Shift+P]** 
 14. Powershell Gallery Integration and more...
+
 ### B. Performance   
-- Light weight IDE (Integrated development Enviroment)    
+- Light weight IDE (Integrated development Environment)    
 - Also makes you write scripts faster
-    * Rich text editing feartues and Looks ups
+    * Rich text editing features and Looks ups
     * Very Keyboard Friendly
-    * Below is a oneliner to download **VSCode cheat sheet for Keyboard shortcuts on Windows**
+    * Below is a one-liner to download **VSCode cheat sheet for Keyboard shortcuts on Windows**
     
     **`(iwr "https://github.com/PrateekKumarSingh/CheatSheets").Links | ?{$_.title -Like "*VSCODE*windows*"} | %{iwr "http://github.com$($_.href)?raw=true" -OutFile $_.title -Verbose}`**
 
@@ -60,9 +69,6 @@ Now you can write and debug PowerShell scripts using the excellent IDE-like inte
     * Any one can [Report Issues](https://github.com/PowerShell/vscode-powershell/issues) here
     * These guys fix issues pretty fast - `Start-Process https://twitter.com/jsnover/status/867697579504611328`
 
-## What Powershell-VSCode ext can't do but ISE can? I mean as of now ;)
-- Remote runspace tabs
-- Language aware code folding
 
 ## VSCode-Powershell Learning Resources
 - [Setting up Visual Studio Code for PowerShell Development](https://www.youtube.com/watch?v=LJNdK0QrIo8) [Video]
@@ -76,3 +82,5 @@ Now you can write and debug PowerShell scripts using the excellent IDE-like inte
 - [Debugging PowerShell script in Visual Studio Code – Part 1](https://blogs.technet.microsoft.com/heyscriptingguy/2017/02/06/debugging-powershell-script-in-visual-studio-code-part-1/) [Article]
 
 - [Debugging PowerShell script in Visual Studio Code – Part 2](https://blogs.technet.microsoft.com/heyscriptingguy/2017/02/13/debugging-powershell-script-in-visual-studio-code-part-2/) [Article]
+
+- [Make Visual Studio Run and Behave like ISE](https://4sysops.com/archives/make-visual-studio-code-look-and-behave-like-powershell-ise/)

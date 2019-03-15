@@ -5,13 +5,14 @@ $item.Refresh()
 }
 
 # Intellisense and Code Completion - get-*
-Get-Service BITS
-get-process a
-[System.Math]::PI
+Get-Service a
+get-process 
+[System.Math]::Loopback
 [System.Net.IPAddress]::Loopback
 
 #Run selection [F8] and Run Script [F5]
 Get-Service BITS
+
 Get-Process spoolsv
 
 # Expand aliases [Shift+Alt+E]
@@ -32,7 +33,7 @@ Get-WmiObject
 
 # Launch Online help  **[Ctrl+F1]**
 Get-Acl
-    
+
 # Themes  Go to Command palette [Ctrl+Shift+P]  > type Themes > Choose "Preferences: Color Themes"
 
 # Multi Cursor editing
@@ -45,14 +46,20 @@ Get-Acl
 }
 
 
-Get-Service b* |sort -desc|export-csv results.csv -notype
 
-# Snippets [Built-In/ Custom]
+Get-Service b* |Sort-Object -desc|export-csv results.csv -notype
+
+
+# Snippets / Custom) [CTRL+ALT+J]
+    # 1. Function template (Built-In)
+    # 2. User Snippets (Custom)
+
+
+
 # [Ctrl+Shift+P] > User snippets > add your snippets in form of JSON [Java script object notation
 
 # Indent Customization - Formatting [Shift+ALt+F]
-Function Invoke-QuickPing
-{
+Function Invoke-QuickPing {
     [CmdletBinding()]
     Param(
         [String] $Computername,
@@ -72,7 +79,7 @@ Function Invoke-QuickPing
 }
 
 
-# Dynamic help
+# Dynamic help using ##
 <#
 .SYNOPSIS
 Short description
@@ -92,9 +99,12 @@ An example
 .NOTES
 General notes
 #>
+
 function Sum ($param1, $param2) {
     $param1+$param2
 }
+
+# Some cool extensions and what the can do
 
 # 3 Special Modules are available in VSCode by default
     Get-Module -ListAvailable | Where-Object {$_.path -like "*ms-vscode.powershell*"}
@@ -110,9 +120,3 @@ function Sum ($param1, $param2) {
     $var=2
     Get-ScriptAnalyzerRule
     Get-ScriptAnalyzerRule | Where-Object {$_.Rulename -like "*UseDeclaredVars*" -or $_.Rulename -like "*avoidusing*alias*"}
-
-
-# Third Party extensions
-    
-
-

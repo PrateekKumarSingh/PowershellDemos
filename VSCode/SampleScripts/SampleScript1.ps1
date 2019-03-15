@@ -7,6 +7,9 @@ Function Add-Space($Length,$Maximum)
 
 # Function to telnet a port from a Source to a Destination 
 # Using the .Net class System.Net.Sockets.TCP/UDPClient
+
+#TODO Write Function Help
+
 Function Invoke-Telnet
 {
 
@@ -59,6 +62,7 @@ Begin
 }
 Process
 {
+    # FIXME Need to add another function
 
     Foreach($Target in $Destination)
     {
