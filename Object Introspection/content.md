@@ -1,25 +1,33 @@
-# Object Introspection
+# PowerShell Classes
 
 PowerShell is object-oriented programming languages, which means that almost everything is implemented using a special programming construct called classes, which are used to create objects that have properties and functionalities, like any real-world object. Before we dig deep into this, let's just quickly understand the basics of `classes`, `objects` and its members.
 
-## Class, Object, Property, and Method
+Generally speaking, a `class` is :
 
-### Class
+* a category
+* a set
+* a classification 
 
-Generally speaking, a class is a category, set or a classification that has some attribute in common and can be differentiated from other classes by kind, type, or quality. For example, 'Human' is a class, and that is different from 'Animal' class. But in terms of programming languages, especially Python and PowerShell a `class` is a template for creating instances of the class, also known as objects.
+that has some attribute in common and can be differentiated from other classes by kind, type, or quality. 
 
-The simplest way to create or define a class in Python and PowerShell is using the `class` keyword. For an example, let's create a simple class 'Human', with some properties and functionalities in Python, first thing first, you have to use the `class` keyword with the name of the class, followed by a colon (` : `). In the next line we change the indentation and provide a body of this class, as demonstrated in the following example:
+'Human' is a class, and that is different from 'Animal' class. But in terms of programming languages, especially PowerShell a `class` is a template for creating instances of the class, also known as objects.
 
-PowerShell on other hand has some small syntactical changes, like the `class` body is now enclosed in brackets `{ }` and we are not using `def` keyword to define methods like in Python. But overall there are a lot of similarities how a basic class is defined in both scripting languages, as you can deduce from the previous and the following example of a class.
+The simplest way to create a class 'Human', with some properties and functionalities in PowerShell is using the `class` keyword, followed by the name of the class, then body of class enclosed in brackets `{ }`.
 
 ```PowerShell
-class Human {
+class Human
+{
     # this is a property/attribute
-    [String]$name = 'homo sapiens'
-    [Int] $height = 5
+    [String]$Name = 'homo sapiens'
+    [Int] $Age = 5
+
     # method definition of a class
     eat(){
-        Write-Host $this.name 'is eating now'
+        Write-Host $this.Name 'is eating'
+    }
+
+    run(){
+        Write-Host $this.Name 'is running'
     }
 }
 ```
@@ -60,22 +68,20 @@ $prateek = New-Object Human
 $john = [Human]::new()
 ```
 
-![Creating PowerShell Objects from a class](images\Chapter5-PSObjInstance.jpg)
-
 ### Accessing Attributes and Functions of an Objects
 
 In order to access the attributes and functions of an object, both PowerShell and Python use a Dot (`.`) operator. That means, to access the `height` property or `talk()` method of object 'John' in PowerShell, you would write some like this:
 
 ```PowerShell
 $john.height
-$john.talk()
+$john.eat()
 ```
 
 ## 'Get-Member' cmdlet in PowerShell
 
 In PowerShell to introspect members of an object we pass the object to the `Get-Member` cmdlet directly or through the pipeline.
 
-Methods and Properties of an object are also called as '`Members`' of the object, this is the reason behind the name of the cmdlet, i.e. `'Get' (Verb) 'Member' (Noun)` as per the PowerShell's 'Verb-Noun' syntax of a cmdlet. `Get-Member` cmdlet will return the member(s) of an object passed to it.
+Methods and Properties of an object are also called as '`Members`' of the object, this is the reason behind the name of the cmdlet, i.e. `'Get' (Verb) 'Member' (Noun)` as per the PowerShell's 'Verb-Noun' syntax of a cmdlet. `Get-Member` cmdlet will return the member(Status) of an object passed to it.
 
 ```PowerShell
 # object as an argument to the input object parameter
@@ -92,8 +98,60 @@ If you look closely in the output of `Get-Member` cmdlet, first you'll notice a 
 Next are properties, with `MemberType` as '`Property`' which is a characteristic of the object like `Rank`, `Count`, `Length` and `IsReadOnly`, and finally the '`Methods`' of the object like `Add()`, `Remove()` or `ToString()` that represent functionalities that can be performed on the object.
 
 Inspecting the object in PowerShell provides an understanding of properties and methods available in the object.
+-----------
 
-![](images/Chapter5-PSGetMemberintro.jpg)
+
+The following list describes the properties that are added when you use the Force parameter:
+
+* PSBase: The original properties of the .NET Framework object without extension or adaptation. These are the properties defined for the object class and listed in MSDN.
+* PSAdapted: The properties and methods defined in the Windows PowerShell extended type system.
+* PSExtended: The properties and methods that were added in the Types.ps1xml files or by using the Add-Member cmdlet.
+
+```PowerShell
+gsv bits -ov p
+$p | Add-Member -MemberType NoteProperty -Name test -Value test
+$p | gm -f
+```
+
+* PSObject: The adapter that converts the base object to a Windows PowerShell PSObject object.
+
+* PSTypeNames: A list of object types that describe the object, in order of specificity. When formatting the object, Windows PowerShell searches for the types in the Format.ps1xml files in the Windows PowerShell installation directory ($pshome). It uses the formatting definition for the first type that it finds
+
+* PSStandardMembers: 
+
+```PowerShell
+# how to add custom typenames to objects
+
+$a = [pscustomobject]@{a=1;b=2}
+$a
+$a |gm
+$a.pstypenames.Clear()
+$a.pstypenames.Add('Prateek')
+$a |gm
+
+# also
+$a.psobject.TypeNames.Insert(0,'new')
+
+# alternatively
+$widget = [pscustomobject]@{    PSTypeName = 'Widget';Color = $null;Size = $null}
+```
+
+
+------------
+
+# Understanding getters and setters
+
+Write-host 'console' *>&1  | gm
+$info = Write-host 'console' *>&1
+
+# read-only properties
+$info.tags = 'something'
+
+# writable properties
+$info.TimeGenerated = [datetime]::now
+
+-----
+
 
 
 # Using Static Classes and Methods
@@ -101,16 +159,16 @@ Inspecting the object in PowerShell provides an understanding of properties and 
 Not all .NET Framework classes can be created by using New-Object. For example, if you try to create a System.Environment or a System.Math object with New-Object, you will get the following error messages:
 
 
-Copy
+Copy-Item
 PS> New-Object System.Environment
 New-Object : Constructor not found. Cannot find an appropriate constructor for
-type System.Environment.
+Get-Content System.Environment.
 At line:1 char:11
 + New-Object  <<<< System.Environment
 
 PS> New-Object System.Math
 New-Object : Constructor not found. Cannot find an appropriate constructor for
-type System.Math.
+Get-Content System.Math.
 At line:1 char:11
 + New-Object  <<<< System.Math
 These errors occur because there is no way to create a new object from these classes. These classes are reference libraries of methods and properties that do not change state. You don't need to create them, you simply use them. Classes and methods such as these are called static classes because they are not created, destroyed, or changed. To make this clear we will provide examples that use static classes.
@@ -146,7 +204,19 @@ PS> [System.Environment] | Get-Member -Static
 # how to check if a class is a static class
  [system.environment].GetConstructors()
 
-# 
+
+# Get-Member
+
+# .GetType().GetProperties()
+# .GetType().GetMethods()
+
+```PowerShell
+$temp = 'Hello world!'
+$temp.gettype().Getproperties() | ft name, membertype
+$Temp | gm -membertype *Property
+```
+
+# Member types and meaning
 |Member Type|Description|
 |:--|:--|
 |AliasProperty|An alias to another member|
@@ -159,9 +229,22 @@ PS> [System.Environment] | Get-Member -Static
 |Method|A method from the BaseObject|
 |Methods|All method member types|
 |NoteProperty|A prorperty defined by a Name-Value pair|
-|ParameterizedProperty|A member that acts like a Property that takes parameters. |This is not consider to be a property or a method.
+|ParameterizedProperty|A member that acts like a Property that takes parameters. This is not consider to be a property or a method.|
 |Properties|All property member types|
 |Property|A property from the BaseObject|
 |PropertySet|A set of properties|
 |ScriptMethod|A method defined as a script|
 |ScriptProperty|A property defined by script language
+
+
+## 
+
+```PowerShell
+'Hello' | gm 
+# parameterized properties
+'Hello'.chars
+'Hello' | gm 
+
+[pscustomobject]@{a=1;b=2}
+$a |Add-Member -MemberType ScriptMethod -Name addvalues -Value {$this.'a' + $this.'b'}
+```
